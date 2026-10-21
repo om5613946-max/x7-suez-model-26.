@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>National Interview Coordination Portal</title>
+<style>
+:root{--n:#0f2342;--n2:#1f3f73;--g:#b08d4f;--bg:#f4f2ec;--p:#fffefb;--l:#e3ded0;--m:#5b6679;--c:#e9edf4}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#17233a;font:15px/1.5 Georgia,serif}
+button,input,select{font:inherit}
+body.locked>*:not(#gate){display:none}body:not(.locked) #gate{display:none}
+#gate{display:grid;place-items:center;min-height:100vh;padding:20px;background:var(--n)}
+.gb{background:var(--p);border-top:4px solid var(--g);border-radius:10px;padding:26px;width:100%;max-width:380px;text-align:center;font-family:system-ui,sans-serif}
+.gb h1{font:600 15px Georgia;letter-spacing:.1em;margin:0 0 8px;color:var(--n2)}
+input,select{width:100%;padding:10px;border:1px solid var(--l);border-radius:6px;background:var(--p)}
+.b{padding:10px 14px;border-radius:6px;border:1px solid var(--l);background:var(--p);cursor:pointer;font-family:system-ui,sans-serif;font-size:13px}.pri{background:var(--n);color:#fff;border-color:var(--n)}
+header{background:var(--n);color:#fff;border-bottom:3px solid var(--g);padding:12px 16px;display:flex;gap:12px;align-items:center}
+header h1{font-size:15px;letter-spacing:.12em;margin:0}header p{margin:0;font:12px system-ui;color:#c9d2e6}
+.logo{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--g);background:#fff;flex:none}
+.tk{background:#0a1a33;color:#f1e6c8;overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--g);padding:7px 0;direction:ltr}
+.tr{display:inline-flex;animation:t 45s linear infinite}.tr span{padding:0 28px;font:600 14px system-ui}.tr span::after{content:"◆";color:var(--g);margin-inline-start:28px;font-size:10px}
+@keyframes t{to{transform:translateX(-50%)}}
+nav{display:flex;overflow-x:auto;background:var(--p);border-bottom:1px solid var(--l)}
+nav button{background:none;border:0;border-bottom:3px solid transparent;padding:12px;font:600 12px system-ui;letter-spacing:.08em;color:var(--m);white-space:nowrap;cursor:pointer}
+nav button.on{color:var(--n2);border-color:var(--g)}
+main{max-width:1180px;margin:0 auto;padding:16px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.bar input{flex:1 1 200px;width:auto}.bar select{width:auto}
+h2{font-size:20px;color:var(--n2);margin:6px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--p);border:1px solid var(--l);border-radius:8px;overflow:hidden}
+.card header{padding:11px 14px;justify-content:space-between}
+.card h3{margin:0;font-size:14px;text-transform:uppercase;letter-spacing:.04em}.card header span{font:12px system-ui;color:#d8c28f}
+ol{list-style:none;margin:6px 14px 10px;padding:0;counter-reset:n}
+li{counter-increment:n;display:flex;align-items:center;gap:8px;padding:7px 4px;font-size:17px}li:nth-child(even){background:#f3f1ea}
+li::before{content:counter(n);flex:none;width:26px;height:26px;border-radius:50%;background:var(--c);color:var(--n2);font:600 12px system-ui;display:grid;place-items:center}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px}
+.st{background:var(--p);border:1px solid var(--l);border-left:4px solid var(--g);border-radius:8px;padding:14px}.st b{display:block;font-size:30px;color:var(--n2)}.st span{font:12px system-ui;color:var(--m);text-transform:uppercase;letter-spacing:.06em}
+table{width:100%;border-collapse:collapse;background:var(--p);font:14px system-ui}th,td{padding:8px 10px;border-bottom:1px solid var(--l);text-align:start}
+.res{background:var(--p);border:1px solid var(--l);border-top:3px solid var(--n2);border-radius:8px;padding:12px;margin-bottom:10px}
+.sl{display:inline-block;min-width:120px;margin:8px 8px 0 0;padding:7px 12px;border:1px solid var(--l);border-inline-start:4px solid var(--n2);border-radius:4px;background:var(--bg);font-family:system-ui,sans-serif}
+.sl.offline{border-inline-start-color:var(--g)}.sl small{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--m)}.sl b{font-size:14px}
+.acts{display:flex;gap:8px;flex-wrap:wrap}footer{text-align:center;color:var(--m);font:12px system-ui;padding:20px}
+#pr{display:none}@media print{body>*:not(#pr){display:none!important}#pr{display:block}}
+</style></head>
+<body class="locked">
+<div id="gate"><form class="gb" id="gf"><h1>PRIVATE SCHEDULE</h1><p>Authorized recipients only. Enter the access password.</p><input type="password" id="gp" aria-label="Access password" required><p id="ge" hidden style="color:#a8322b">Incorrect password.</p><button class="b pri" style="width:100%;margin-top:10px">Enter</button></form></div>
+<header><img class="logo" src="logo.jpg" alt="Emblem"><div><h1>NATIONAL INTERVIEW COORDINATION PORTAL</h1><p>Ministry of Foreign Affairs Model | Interview Management System</p></div></header>
+<div class="tk"><div class="tr" id="tr"></div></div>
+<nav id="nav"></nav>
+<main><div class="bar"><input type="search" id="q" placeholder="Search an interviewer" aria-label="Search"><select id="f" aria-label="Filter"><option value="all">All</option><option value="online">Online</option><option value="offline">Offline</option></select><button class="b" id="clr">Clear</button></div><div id="v"></div></main>
+<div id="pr"></div>
+<footer>National Interview Coordination Portal · An independent coordination tool, not an official government website.</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+const H='ac263454e42c13cd8f3f1f8c73e9a372c1390dba0f150daa45cdc399b4fc5687';
+const $=s=>document.querySelector(s);
+const sha=async t=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)))].map(x=>x.toString(16).padStart(2,'0')).join('');
+try{if(sessionStorage.getItem('g')===H)document.body.classList.remove('locked')}catch(e){}
+$('#gf').onsubmit=async e=>{e.preventDefault();let h='';try{h=await sha($('#gp').value.trim())}catch(x){}
+if(h===H){try{sessionStorage.setItem('g',H)}catch(x){}document.body.classList.remove('locked')}else $('#ge').hidden=false};
+const W=['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'];
+const D={online:W,offline:W.slice(0,6)},L={online:'Online Interviews',offline:'Offline Interviews'};
+const S={online:{Saturday:['Mayar Ahmed','Mostafa Reda','Roqaia','Nadia'],Sunday:['Mohamed Ramzy','Habiba Ahmed','Anas Mohamed','Mostafa Reda','Roqaia','Nadia'],Monday:['Mohamed Ramzy','Mayar Ahmed'],Tuesday:['Mohamed Ramzy','Mayar Ahmed','Sama Mohamed'],Wednesday:['Mayar Ahmed','Sama Mohamed'],Thursday:['Habiba Ahmed','Anas Mohamed','Roqaia','Mariam El-Husseiny','Nada Haitham'],Friday:['Mohamed Ramzy','Mayar Ahmed','Habiba Ahmed','Anas Mohamed','Mariam El-Husseiny','Ziad','Nada Haitham','Nadia']},
+offline:{Saturday:['Sama Mohamed'],Sunday:['Habiba Ahmed','Mariam El-Husseiny','Nada Haitham'],Monday:['Mayar Ahmed','Habiba Ahmed','Anas Mohamed','Ziad El-Menhy','Nada Haitham','Sama Mohamed'],Tuesday:['Mohamed Ramzy','Mayar Ahmed','Habiba Ahmed','Anas Mohamed','Mostafa Reda','Ziad El-Menhy','Roqaia','Nada Haitham','Nadia'],Wednesday:['Mohamed Ramzy','Mayar Ahmed','Habiba Ahmed','Anas Mohamed','Mostafa Reda','Mariam El-Husseiny','Ziad','Nada Haitham','Nadia'],Thursday:['Mohamed Ramzy','Mayar Ahmed','Ziad']}};
+let view='overview';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const card=(k,d)=>{const a=S[k][d],n=a.length;return `<article class="card"><header><h3>${d}</h3><span>${n} interviewer${n==1?'':'s'}</span></header>`+(n?`<ol>${a.map(x=>`<li dir="auto">${esc(x)}</li>`).join('')}</ol>`:'<p style="margin:12px 14px;color:var(--m)">No interviewers assigned.</p>')+'</article>'};
+const sched=k=>`<h2>${L[k]}</h2><div class="grid">${D[k].map(d=>card(k,d)).join('')}</div>`;
+const tot=k=>D[k].reduce((s,d)=>s+S[k][d].length,0);
+const over=()=>`<h2>Overview</h2><div class="stats"><div class="st"><b>${tot('online')}</b><span>Online interview slots</span></div><div class="st"><b>${tot('offline')}</b><span>Offline interview slots</span></div><div class="st"><b>${new Set([...Object.values(S.online),...Object.values(S.offline)].flat()).size}</b><span>Unique name entries</span></div></div><table><tr><th>Day</th><th>Online</th><th>Offline</th></tr>${W.map(d=>`<tr><td>${d}</td><td>${S.online[d]?S.online[d].length:'—'}</td><td>${S.offline[d]?S.offline[d].length:'—'}</td></tr>`).join('')}</table><p style="font:12px system-ui;color:var(--m)">Slots count assignments, not unique people. A dash means the day is not part of that schedule.</p>`;
+const share=()=>`<h2>Share &amp; Export</h2><div class="acts"><button class="b pri" data-a="link">Copy Share Link</button><button class="b" data-a="xlsx">Export to Excel</button><button class="b" data-a="csv">Export to CSV</button><button class="b" data-a="print">Print-Friendly Schedule</button></div>`;
+const res=()=>{const q=$('#q').value.trim().toLowerCase(),f=$('#f').value;if(!q&&f=='all')return'';const m={};for(const k of['online','offline']){if(f!='all'&&f!=k)continue;for(const d of D[k])S[k][d].forEach((n,j)=>{if(!q||n.toLowerCase().includes(q))(m[n]=m[n]||[]).push(`<div class="sl ${k}"><small>${k}</small><b>${d}</b><br><span>Position ${j+1}</span></div>`)})}const e=Object.entries(m);return '<h2>Search results</h2>'+(e.length?e.map(([n,t])=>`<div class="res"><b dir="auto" style="font-size:18px">${esc(n)}</b><div>${t.join('')}</div></div>`).join(''):'<p>No matching interviewers.</p>')};
+const T={overview:['OVERVIEW',over],online:['ONLINE INTERVIEWS',()=>sched('online')],offline:['OFFLINE INTERVIEWS',()=>sched('offline')],share:['SHARE &amp; EXPORT',share]};
+const render=()=>{$('#nav').innerHTML=Object.entries(T).map(([k,[t]])=>`<button data-v="${k}" class="${k==view?'on':''}">${t}</button>`).join('');$('#v').innerHTML=res()||T[view][1]()};
+const rows=k=>D[k].flatMap(d=>S[k][d].length?S[k][d].map(n=>[d,n]):[[d,'']]);
+const dl=(n,b)=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;document.body.append(a);a.click();a.remove()};
+document.onclick=e=>{const b=e.target.closest('button');if(!b)return;
+if(b.dataset.v){view=b.dataset.v;$('#q').value='';render();return}
+const a=b.dataset.a;
+if(a=='link')navigator.clipboard.writeText(location.href.split('#')[0]).then(()=>alert('Share link copied.'),()=>alert('Copy the address bar link instead.'));
+else if(a=='csv')dl('interview-schedule.csv',new Blob(['\ufeff'+['Type,Day,Interviewer',...['online','offline'].flatMap(k=>rows(k).map(([d,n])=>`${L[k]},${d},"${n}"`))].join('\r\n')],{type:'text/csv'}));
+else if(a=='xlsx'){if(!window.XLSX)return alert('Excel library did not load. Use CSV.');const w=XLSX.utils.book_new();for(const k of['online','offline'])XLSX.utils.book_append_sheet(w,XLSX.utils.aoa_to_sheet([['Day','Interviewer'],...rows(k)]),L[k]);dl('interview-schedule.xlsx',new Blob([XLSX.write(w,{bookType:'xlsx',type:'array'})]))}
+else if(a=='print'){$('#pr').innerHTML='<img src="logo.jpg" width="70" alt=""><h1>National Interview Coordination Portal</h1>'+['online','offline'].map(k=>`<h2>${L[k]}</h2><table><tr><th>Day</th><th>Interviewers</th></tr>${D[k].map(d=>`<tr><td>${d}</td><td>${S[k][d].map(esc).join(' · ')||'—'}</td></tr>`).join('')}</table>`).join('');window.print()}};
+$('#q').oninput=$('#f').onchange=render;$('#clr').onclick=()=>{$('#q').value='';$('#f').value='all';render()};
+$('#tr').innerHTML=Array(12).fill('<span dir="rtl">كلية السياسة والاقتصاد - جامعة السويس - نموذج وزارة الخارجية</span>').join('');
+render();
+</script>
+</body></html>
